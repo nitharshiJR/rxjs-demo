@@ -1,59 +1,31 @@
-# RxjsDemo
+RxJs is a library in js. use to handle async data.
+RxJs use to appevents, Http reqs
+# Rxjs main
+   observable-special data structure
+   send multiple values over time not a same time
+   every time a new data update
+# why use RxJs in angular
+    handle async http reqs
+    manage click,scrolls
+    form changes track in reactive form
+    give communication methods for components
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.5.
+ # why use observable
+   *mutiple emitions(send)
+   *lazy execution- if your wish you can subscribe and start 
+   *cancelation-if you want you can stop data then resources can save.
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   # RxJs concepts
+   1. cold vs hot observable
+      cold observable - if we give subscription then it will start otherwise its cant start.
+      Hot observable -  automatically start to send data.even we dont give subscription to start
+   2. multicasting
+       ex: live tv everyone see same show
+   3. operators/functions
+        modify data stream (stream is data flow)
+           map - transform data
+           filter - filter data
+           merge - combine two streams
+   *without promisses we can using call back. but callback is look messy
+   *promise returns one value then stops.
+   *observable can return multiple values over time and can be cancelled.its used for http calls,user input events, timers, intervals
