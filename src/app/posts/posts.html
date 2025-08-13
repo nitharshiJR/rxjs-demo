@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Posts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th> 
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Age</th>
+                    <th>Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let post of postsArray">
+                <tr>
+                
+                    <td>{{post.name}}</td>
+                    <td>{{post.role}}</td>
+                    <td>{{post.age}}</td>
+                    <td>{{post.skills.join(', ')}}</td>
+                </tr>
+                </ng-container>
+            </tbody>
+        </table>
+</div>

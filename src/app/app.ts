@@ -1,35 +1,21 @@
-import { Component, signal,OnInit } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {Observable} from 'rxjs';
+import { Header } from "./header/header";
+import { Posts } from './posts/posts';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Header, Posts],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
-// export class App implements OnInit {
-//   ngOnInit() {
-  //   const promise = new Promise((resolve,reject)=>{
-  //     setTimeout(()=>{
-  //       resolve('promise resolved');
-  //     },2000);
-  //   });
-  //   promise.then((value)=>console.log(value));
-  
-  export class App implements OnInit {
-  protected readonly title = signal('rxjs-demo');
+export class App implements OnInit {
 
-  ngOnInit() {
-    const observable = new Observable((observer) => {
-      setTimeout(() => {
-        observer.next('observable value 1');
-        observer.complete();
-      }, 2000);
-    });
+  constructor() {
+   
+  }
 
-    observable.subscribe({
-      next: (value) => console.log(value),
-      complete: () => console.log('observable completed')
-    });
+  ngOnInit(): void {
+    console.log('App component initialized ✅');
   }
 }
