@@ -11,19 +11,20 @@ export class PostService {
 
   getPosts() {
     return this.http
-      .get<{ [id: string]: IPost }>(
-        'https://rxjs-demo-92c5c-default-rtdb.firebaseio.com/post.json'
+      .get<any>(
+        'https://rxjs-demo-92c5c-default-rtdb.firebaseio.com/posts.json'
       )
       .pipe(
-        map((users) => {
-          let postData: IPost[] = [];
-          if (users) { 
-            for (let id in users) {
-              postData.push({ ...users[id], id });
-            }
-          }
-          return postData;
-        })
-      );
+       map((posts) => {
+   let postData: IPost[] = [];
+  if (posts) {
+    for (let id in posts) {
+      postData.push({ ...posts[id], id });
+    }
   }
-}
+  return postData;
+})
+      );
+    }
+  }
+

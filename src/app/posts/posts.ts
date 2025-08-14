@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PostService } from '../post.service';
+import { IPost } from '../Ipost';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -8,17 +11,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './posts.html',
   styleUrls: ['./posts.scss']
 })
-export class Posts {
+export class Posts implements OnInit , OnDestroy {
+  posts: IPost[] = [];
+  postsSubscription!:Subscription;
+  limitedPosts=  this.posts.slice(0,5); // Limit to first 10 posts
+  constructor(private postService:PostService) {}
 
-  // Your posts object
-  posts = {
-    post1: { name: 'Nithar', role: 'Frontend Developer', age: 23, skills: ['Angular', 'React', 'RxJS'] },
-    post2: { name: 'Piriyankan', role: 'Backend Developer', age: 27, skills: ['Node.js', 'MongoDB', 'Express'] },
-    post3: { name: 'Meera', role: 'UI/UX Designer', age: 25, skills: ['Figma', 'Canva', 'Photoshop'] }
-  };
-
-  // Convert object to array for *ngFor
-  postsArray = Object.values(this.posts);
-
-  constructor() {}
+  ngOnInit(): void {
+    this.postService.getPosts().subscribe((posts) => {
+      console.log('Posts fetched:', posts);
+      this.posts = posts;
+    })
+  }
+  ngOnDestroy(): void {
+       this.postsSubscription && this.postsSubscription.unsubscribe();
+  }
 }
